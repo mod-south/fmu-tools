@@ -89,9 +89,7 @@ def set_data_constant(config: dict):
             for data_type in config["horizons"]:
                 print(" >> " + data_type)
                 for horizon in project.horizons:
-                    set_safe_value(
-                        project, "horizon", horizon.name, data_type, value
-                    )
+                    set_safe_value(project, "horizon", horizon.name, data_type, value)
 
         elif isinstance(config["horizons"], dict):
             # check setup for each horizon category (list vs. all)
@@ -111,20 +109,15 @@ def set_data_constant(config: dict):
                             )
                     else:
                         assert False, (
-                            "keyword '"
-                            + horizons
-                            + "' not recognized, 'all' expected!"
+                            "keyword '" + horizons + "' not recognized, 'all' expected!"
                         )
                 elif isinstance(horizons, list):
                     for horizon in horizons:
-                        set_safe_value(
-                            project, "horizon", horizon, data_type, value
-                        )
+                        set_safe_value(project, "horizon", horizon, data_type, value)
 
         else:
             assert False, (
-                "Value associated with key 'horizons' must be of "
-                "type list or dict!"
+                "Value associated with key 'horizons' must be of " "type list or dict!"
             )
 
     # ZONE DATA
@@ -146,14 +139,10 @@ def set_data_constant(config: dict):
                 if isinstance(zones, str):
                     if zones == "all":
                         for zone in project.zones:
-                            set_safe_value(
-                                project, "zone", zone.name, data_type, value
-                            )
+                            set_safe_value(project, "zone", zone.name, data_type, value)
                     else:
                         assert False, (
-                            "keyword '"
-                            + zones
-                            + "' not recognized, 'all' expected!"
+                            "keyword '" + zones + "' not recognized, 'all' expected!"
                         )
                 elif isinstance(zones, list):
                     for zone in zones:
@@ -161,8 +150,7 @@ def set_data_constant(config: dict):
 
         else:
             assert False, (
-                "Value associated with key 'zones' must be of "
-                "type list or dict!"
+                "Value associated with key 'zones' must be of " "type list or dict!"
             )
 
     # GRID MODEL DATA
@@ -194,14 +182,10 @@ def set_data_constant(config: dict):
                                 prop.set_values(prop.get_values() * 0 + value)
                                 print(" >> >> " + prop.name)
                             except:
-                                print(
-                                    " >> >> " + prop.name + " is already empty"
-                                )
+                                print(" >> >> " + prop.name + " is already empty")
                     else:
                         assert False, (
-                            "keyword "
-                            + zones
-                            + "not recognized, 'all' expected!"
+                            "keyword " + zones + "not recognized, 'all' expected!"
                         )
                 elif isinstance(propnames, list):
                     for propname in propnames:
@@ -215,8 +199,7 @@ def set_data_constant(config: dict):
 
         else:
             assert False, (
-                "Value associated with key 'zones' must be of "
-                "type list or dict!"
+                "Value associated with key 'zones' must be of " "type list or dict!"
             )
 
     print("End of function set_data_constant().")
